@@ -17,5 +17,19 @@
         
         <h1>Little Wings</h1>
 
+        <button id="startstopbutton">▶︎</button>
+
+        <script>
+            const button=document.getElementById("startstopbutton");
+
+            button.addEventListener("click", function() {
+                if (button.textContent="▶︎") {
+                    button.textContent="✩"
+                } else {
+                    button.textContent ="▶︎";
+                }
+                });
+        </script>
+
     </body>
     </html>
