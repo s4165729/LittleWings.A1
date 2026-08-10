@@ -1,3 +1,10 @@
 body {
-    background-color: #add8e6;
+    background-color: lightblue;
+}
+
+h1 {
+    font-family: "Playwrite AU QLD", cursive;
+    text-align: center;
+    color: white;
+    font-size: 3rem;
 }
