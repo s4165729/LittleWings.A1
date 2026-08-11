@@ -11,6 +11,8 @@
 
         <!--css styling :)-->
         <link rel="stylesheet" href="style.css">
+
+        <script src="https://unpkg.com/tone"></script>
     </head>
 
     <body>
@@ -21,27 +23,8 @@
             <button id="daynightbutton" aria-label="Toggle day or night">☾</button>
             <button id="startstopbutton" aria-label="start or pause">▶</button>
         </div>
-
-        <script>
-            const button = document.getElementById("startstopbutton");
-            const daynightbutton = document.getElementById("daynightbutton");
-
-            button.addEventListener("click", function() {
-                if (button.textContent === "▶") {
-                    button.textContent="⏯"
-                } else {
-                    button.textContent = "▶︎";
-                }
-            });
-
-            daynightbutton.addEventListener("click", function() {
-                if (daynightbutton.textContent ==="☾") {
-                    daynightbutton.textContent ="☼";
-                }else {
-                    daynightbutton.textContent ="☾";
-                }
-            });
-        </script>
+    
+    </script>
 
         <div id="cloud-field"></div>
         <img src="cloud.png" class="cloud size-sm" data-note="C4" alt="cloud">
@@ -49,7 +32,9 @@
         <img src="cloud.png" class="cloud size-md" data-note="E4" alt="cloud">
         <img src="cloud.png" class="cloud size-lg" data-note="G4" alt="cloud">
         <img src="cloud.png" class="cloud size-sm" data-note="A4" alt="cloud">
-        
+</div>
 
+<script src="main.js" defer></script>
+        
     </body>
     </html>
