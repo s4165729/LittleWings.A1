@@ -32,3 +32,25 @@ h1 {
     font-size: 28px;
     cursor: pointer;
 }
+
+#cloud-field {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.cloud {
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.size-sm {width: 70px;}
+.size-md {width: 110px;}
+.size-lg {width: 160px;}
+
+.cloud.playing {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 14px rgba(255,255,255,0.9));
+}
