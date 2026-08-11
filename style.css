@@ -1,6 +1,22 @@
+
+:root {
+    background-color: rgb(183, 218, 255);
+    text-color: rgb(4, 29, 129);
+    button-color: rgb(4 ,29 ,129);
+}
+
+body.night {
+    background-color: rgb(10, 15, 45);
+    text-color:rgb(210, 220, 255);
+    button-color: rgb(90,100,170);
+}
+
 body {
     background-color: rgb(183,218,255);
     transition: background-color 0.4s ease;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
 }
 
 h1 {
@@ -9,6 +25,7 @@ h1 {
     color: rgb(4, 29, 129);
     font-size: 2.2rem;
     margin-top: 20px;
+    transition: color 0.4s ease;
 }
 
 /* all control buttons at buttom grouped*/
@@ -19,6 +36,7 @@ h1 {
     transform: translateX(-50%);
     display: flex;
     gap: 20px;
+    z-index: 10;
 }
 
 #daynightbutton, 
@@ -33,24 +51,69 @@ h1 {
     cursor: pointer;
 }
 
-#cloud-field {
+/*volume buttons*/
+.volume-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 30px;
-    margin-top: 60px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
 }
 
-.cloud {
+#mutebutton,
+#volumedownbutton,
+#volumeupbutton {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(4 ,29 ,129);
+    color: white;
+    font-size: 18px;
     cursor: pointer;
-    transition: transform 0.15s ease, filter 0.15s ease;
 }
 
-.size-sm {width: 70px;}
-.size-md {width: 110px;}
-.size-lg {width: 160px;}
+#clouds {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+}
+
+/*clouds sit at fixed spots and they gently have movementt*/
+.cloud {
+    position: absolute;
+    cursor: pointer;
+    animation: bob 3s ease-in-out infinite;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    filter: drop-shadow(0 4px 6px rgba(30,60,100,0.15)); 
+}
+
+.size-sm {width: 90px; }
+.size-md {width: 130px; }
+.size-lg {width: 170px; }
+
+@keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
 .cloud.playing {
-    transform: scale(1.08);
+    transform: scale(1.15);
     filter: drop-shadow(0 0 14px rgba(255,255,255,0.9));
+}
+
+#plane {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    transition: left 3s linear;
+    filter: drop-shadow(0 6px 8px rgba(30,60,100,0.2));
+}
+
+#plane.flying {
+    left: 80%;
 }
