@@ -6,19 +6,23 @@ const mutebutton = document.getElementById("mutebutton");
 const plane = document.getElementById("plane");
 const clouds = document.querySelectorAll(".cloud");
 
-//setting up the instrument with tone.polysynth lets more than one ring out at once, so 
-//user holds two clouds on together it plays a chord instead of cutting off//
-const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+//piano sound instrument//
+const paino = new Tone.sampler({
+    urls: {
+        C4: "C4.mp3",
+        D4: "D4.mp3",
+        E4: "E4.mp",
+        F4: "F4.mp3",
+        G4: "G4.mp3",
+        A4: "A4.mp3",
+        B4: "B4.mp3",
+        C5: "C5.mp3"
+    }, 
+    baseUrl: "sounds/piano/"
+}).toDestination();
 
-//play the audio until the user has clicked something once//
-let audtioHasStarted = false;
+let audioHasStarted =false;
 
-async function startAudioIfNeeded() {
-    if (!audioHasStarted) {
-        await Tone.start();
-        audioHasStarted = true;
-    }
-}
 
 //start/stop buttons that make the plane fly//
 
@@ -35,12 +39,17 @@ async function startAudioIfNeeded() {
     });
 
     //volume controls//
-    synth.volume.value = -8;
+    piano.volume.value = -8;
 
     mutebutton.addEventListener("click", function () {
-        synth.mute = !synth.mute;
-        mutebutton.textContent = synth.mute ? "🎶" : "🎶";
-    });
+        piano.mute= !piano.mute;
+        if (piano.mute) {
+            mutebutton.textContent = "🎶";
+        }else{
+            mutebutton.textContent="🎶";
+        }
+        });
+
 
     //day/night button//
     DayNightButton.addEventListener("click", function () {
@@ -56,18 +65,18 @@ async function startAudioIfNeeded() {
     //clouds - allow users to tap a notes, and then tap again to stop it
     //one listener per cloud but they all share the same code/function
     clouds.forEach(function (cloud) {
-        cloud.addEventListener("click",async function () {
+        cloud.addEventListener("click", async function () {
             await startAudioIfNeeded();
+            const note = cloud.dataset.note;
 
-            const note = cloud.dataset.note; 
-             
-            if (cloud.classList.contains("playing")) {
-                synth.triggerRealease(note); 
+            //play piano notes//
+            pianotriggerAttackRelease(note,"2n");
+
+            //cloud visually reacts
+            cloud.classList.add("playing");
+
+            setTimeout(function () {
                 cloud.classList.remove("playing");
-            } else {
-                synth.triggerAttack(note); 
-                cloud.classList.add("playing");
-            }
-            
+            }, 800);
         });
     });
