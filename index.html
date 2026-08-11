@@ -17,18 +17,30 @@
         
         <h1>Little Wings</h1>
 
-        <button id="startstopbutton">▶︎</button>
+        <div class="control-buttons">
+            <button id="daynightbutton" aria-label="Toggle day or night">☾</button>
+            <button id="startstopbutton" aria-label="start or pause">▶</button>
+        </div>
 
         <script>
-            const button=document.getElementById("startstopbutton");
+            const button = document.getElementById("startstopbutton");
+            const daynightbutton = document.getElementById("daynightbutton");
 
             button.addEventListener("click", function() {
-                if (button.textContent="▶︎") {
-                    button.textContent="✩"
+                if (button.textContent === "▶") {
+                    button.textContent="⏯"
                 } else {
-                    button.textContent ="▶︎";
+                    button.textContent = "▶︎";
                 }
-                });
+            });
+
+            daynightbutton.addEventListener("click", function() {
+                if (daynightbutton.textContent ==="☾") {
+                    daynightbutton.textContent ="☼";
+                }else {
+                    daynightbutton.textContent ="☾";
+                }
+            });
         </script>
 
     </body>

@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(183,218);
+    background-color: rgb(183,218,255);
+    transition: background-color 0.4s ease;
 }
 
 h1 {
@@ -10,20 +11,24 @@ h1 {
     margin-top: 20px;
 }
 
-#startstopbutton {
+/* all control buttons at buttom grouped*/
+.control-buttons{
     position: fixed;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
 
+#daynightbutton, 
+#startstopbutton {
     width: 70px;
     height: 70px;
     border-radius: 50%;
     border: none;
-
     background-color: rgb(4, 29, 129);
     color: white;
     font-size: 28px;
-
     cursor: pointer;
 }
