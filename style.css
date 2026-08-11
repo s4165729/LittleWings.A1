@@ -112,6 +112,7 @@ h1 {
     width: 160px;
     transition: left 3s linear;
     filter: drop-shadow(0 6px 8px rgba(30,60,100,0.2));
+    z-index: 20;
 }
 
 #plane.flying {
