@@ -3,8 +3,6 @@
 const StartStopButton = document.getElementById("startstopbutton");
 const DayNightButton = document.getElementById("daynightbutton");
 const mutebutton = document.getElementById("mutebutton");
-const volumeDownButton = document.getElementById("volumedownbutton");
-const volumeUpButton = document.getElementById("volumeupbutton");
 const plane = document.getElementById("plane");
 const clouds = document.querySelectorAll(".cloud");
 
@@ -38,14 +36,6 @@ async function startAudioIfNeeded() {
 
     //volume controls//
     synth.volume.value = -8;
-
-    volumeUpButton.addEventListener("click", function () {
-        synth.volume.vule = Math.min(synth,volume.value + 6,0);
-    });
-
-    volumeDownButton.addEventListener("click",function () {
-        synth.volume.value = Math.max(synth.volume.value -6, -30);
-    });
 
     mutebutton.addEventListener("click", function () {
         synth.mute = !synth.mute;
