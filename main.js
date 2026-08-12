@@ -2,7 +2,7 @@
  
 const startStopButton = document.getElementById("startstopbutton");
 const dayNightButton = document.getElementById("daynightbutton");
-const infoButton = document.getElementById("infoButton");
+const infoButton = document.getElementById("infobutton");
 const mutebutton = document.getElementById("mutebutton");
 const volumeDownButton = document.getElementById("volumedownbutton");
 const volumeUpButton = document.getElementById("volumeupbutton");
@@ -25,7 +25,7 @@ const piano = new Tone.Sampler({
 }).toDestination();
 
 const planeSynth = new Tone.Synth({
-    oscillator: {type: "triangle" },
+    oscillator: { type: "triangle" },
 }). toDestination();
 
 let audioHasStarted =false;
@@ -54,11 +54,11 @@ mutebutton.addEventListener("click", function () {
     mutebutton.textContent=Tone.getDestination().mute ? "🔊" : "🔊" ; 
 });
 
-StartStopButton.addEventListener("click", async function () {
+startStopButton.addEventListener("click", async function () {
     await startAudioIfNeeded();
     plane.classList.toggle("flying");
     plane.classList.toggle("flying");
-    StartStopButton.textContent = plane.classList.contains("flying")? "⏸" : "▶";
+    startStopButton.textContent = plane.classList.contains("flying")? "⏸" : "▶";
 });
 
 dayNightButton.addEventListener("click", function () {
@@ -110,4 +110,4 @@ plane.addEventListener("click", async function () {
                 cloud.classList.add("playing");
             }
         });
-    });
+}):
