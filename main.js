@@ -109,4 +109,10 @@ plane.addEventListener("click", async function () {
                 cloud.classList.add("playing");
             }
         });
-}):
+
+const modalOverlay = document.getElementById("modal-overlay");
+const modalClose = document.getElementById("modal-close");
+
+modalClose.addEventListener("click", function () {
+    modalOverlay.classList.add("hidden");
+});

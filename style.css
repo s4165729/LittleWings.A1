@@ -44,8 +44,8 @@ h1 {
 
 /* all control buttons at buttom grouped*/
 #infobutton,
-#daynight button,
-#startstopsbutton,
+#daynightbutton,
+#startstopbutton,
 #portfoliobutton {
     width: 70px;
     height: 70px;
