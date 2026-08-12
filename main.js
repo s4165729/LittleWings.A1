@@ -7,7 +7,7 @@ const plane = document.getElementById("plane");
 const clouds = document.querySelectorAll(".cloud");
 
 //piano sound instrument//
-const paino = new Tone.sampler({
+const piano = new Tone.sampler({
     urls: {
         C4: "C4.mp3",
         D4: "D4.mp3",
@@ -18,6 +18,7 @@ const paino = new Tone.sampler({
         B4: "B4.mp3",
         C5: "C5.mp3"
     }, 
+
     baseUrl: "sounds/piano/"
 }).toDestination();
 
@@ -70,7 +71,7 @@ let audioHasStarted =false;
             const note = cloud.dataset.note;
 
             //play piano notes//
-            pianotriggerAttackRelease(note,"2n");
+            piano.triggerAttackRelease(note,"2n");
 
             //cloud visually reacts
             cloud.classList.add("playing");
