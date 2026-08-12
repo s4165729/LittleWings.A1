@@ -20,7 +20,7 @@ const piano = new Tone.Sampler({
         A4: "A4.mp3",
     }, 
     release: 1,
-    baseUrl: "https://tonejs.github.io/audio/salamander/",
+    baseUrl: "https://jonejs.github.io/audio/salamnder/"
 }).toDestination();
 
 const planeSynth = new Tone.Synth({
@@ -73,10 +73,6 @@ modalCloseButton.addEventListener("click", function () {
     modalOverlay.classList.add("hidden");
 });
 
-modalCloseX.addEventListener("click", function () {
-    modalOverlay.classList.add("hidden");
-});
-
 let planeIsUp = false;
 
 plane.addEventListener("click", async function () {
@@ -97,22 +93,20 @@ plane.addEventListener("click", async function () {
     //one listener per cloud but they all share the same code/function
 
     clouds.forEach(function (cloud) {
+
         cloud.addEventListener("click", async function () {
+
             await startAudioIfNeeded();
             const note = cloud.dataset.note;
 
             if (cloud.classList.contains("playing")) {
+
                 piano.triggerRealse(note);
                 cloud.classList,remove("playing");
             } else {
+
                 piano.triggerAttack(note);
                 cloud.classList.add("playing");
             }
         });
-
-const modalOverlay = document.getElementById("modal-overlay");
-const modalClose = document.getElementById("modal-close");
-
-modalClose.addEventListener("click", function () {
-    modalOverlay.classList.add("hidden");
-});
+    });
