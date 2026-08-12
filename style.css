@@ -32,9 +32,7 @@ h1 {
     transition: color 0.4s ease;
 }
 
-/* all control buttons at buttom grouped*/
-.cntrl-btn {
-    width: 70px;
+.control-buttons {
     position: fixed;
     bottom: 30px;
     left: 50%;
@@ -44,10 +42,8 @@ h1 {
     z-index: 10;
 }
 
-#infobutton
-#daynightbutton, 
-#startstopbutton
-#portfoliobutton {
+/* all control buttons at buttom grouped*/
+.cntrl-btn {
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -61,8 +57,9 @@ h1 {
     justify-content: center;
     text-decoration: none;
     box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
 }
-
 
 /*volume buttons*/
 .volume-controls {
@@ -70,22 +67,33 @@ h1 {
     top: 20px;
     right: 20px;
     display: flex;
-    display: flex;
+    align-items: center;
     gap: 10px;
+    background-color: white;
+    border-radius: 999px;
+    padding: 6px 10px;
+    box-shadow: 0 4px 10px rgba(30, 60, 100, 0.15;
     z-index: 10;
 }
 
-#mutebutton,
-#volumedownbutton,
-#volumeupbutton {
-    width: 44px;
-    height: 44px;
+.vol-btn {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     border: none;
-    background-color: var(--button-color);
-    color: white;
-    font-size: 18px;
+    background-color: transparent;
+    color: var(--button-color);
+    font-size: 16px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.vol-btn:hover {
+    background-color: rgba(4, 29, 129, 0.08);
 }
 
 #clouds {
@@ -104,8 +112,8 @@ h1 {
 }
 
 .size-sm {width: 90px; }
-.size-md {width: 130px; }
-.size-lg {width: 170px; }
+.size-md {width: 110px; }
+.size-lg {width: 150px; }
 
 @keyframes bob {
     0%, 100% { transform: translateY(0); }
@@ -117,7 +125,7 @@ h1 {
     filter: drop-shadow(0 0 14px rgba(255,255,255,0.9));
 }
 
-#plane {
+#plane.png {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -157,28 +165,8 @@ h1 {
     color: rgb(4, 29, 129);
 }
 
-.modal-card h2 {
-    margin-top: 0;
-}
-
-.modal-card p {
-    margin: 10px 0;
-}
-
-#modal-close {
-    margin-top: 12px;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 50px;
-    background-color: rgb(4, 29, 129);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.modal-card {
-    position: relative;
-}
+.modal-card h2 {margin-top: 0}
+.modal-card p {margin: 10px 0;}
 
 #modal-close-x {
     position: absolute;
@@ -189,6 +177,17 @@ h1 {
     border: none;
     background-color: rgba(4, 29, 129, 0.08);
     color: rgb(4, 29, 129)
-    font-size: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#modal-close {
+    margin-top: 12px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(4, 29, 129);
+    color: white;
+    font-size: 16px;
     cursor: pointer;
 }

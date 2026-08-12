@@ -59,26 +59,26 @@
         style="top:65%; left:10%;" 
         data-note="C5" alt="C5 piano note">
 
-        <img src="plane.png" id="plane" alt="plane">
+        <img src="plane.png" id="plane.png" alt="plane">
 </div>
 
 <!--start/stop button, day/night button and link to portfolio and information on how to play-->
 <div class="control-buttons">
-    <a class="ctrl-btn" id="portfoliobutton" href="https://akiraclass.portfolio.github.io/work-idex" 
-    target="_blank" rel="noopener" aria-label="View my work index">📖</a>
-    <button id="infobutton" aria-label="How to play">⚙︎</button>
-    <button id="startstopbutton" aria-label="start or pause">▶︎</button>
-    <button id="daynightbutton" aria-label="toggle day or night">☾</button>
+    <a class="ctrl-btn" id="portfoliobutton" href="https://akiraclass.portfolio.github.io/work-idex" target="_blank" rel="noopener" aria-label="View my work index">📖</a>
+    <button class="ctrl-btn" id="infobutton" aria-label="How to play">⚙︎</button>
+    <button class="ctrl-btn" id="startstopbutton" aria-label="start or pause">▶︎</button>
+    <button class="ctrl-btn" id="daynightbutton" aria-label="toggle day or night">☾</button>
 </div>
 
 <!--instruction popup shown automatically when page loads-->
 <div id="modal-overlay">
     <div class="modal-card">
+        <button id="modal-close-x" aria-label="close">x</button>
         <h2>HOW TO PLAY</h2>
         <p>Tap a cloud to play a note. Tap again to stop</p>
         <p> ▶︎ (start)<p>
         <p> 🎶  - + (noise controls) </p> 
-        <button id="modal-close-x" aria-label="close">x</button>
+        <button id="modal-close">Got it!</button>
     </div>
 </div>
 

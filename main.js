@@ -1,88 +1,113 @@
  
  
-const StartStopButton = document.getElementById("startstopbutton");
-const DayNightButton = document.getElementById("daynightbutton");
+const startStopButton = document.getElementById("startstopbutton");
+const dayNightButton = document.getElementById("daynightbutton");
+const infoButton = document.getElementById("infoButton");
 const mutebutton = document.getElementById("mutebutton");
+const volumeDownButton = document.getElementById("volumedownbutton");
+const volumeUpButton = document.getElementById("volumeupbutton");
+const modalOverlay = document.getElementById("modal-overlay");
+const modalCloseButton = document.getElementById("modal-close");
+const modalCloseX = document.getElementById("modal-close-x");
 const plane = document.getElementById("plane");
 const clouds = document.querySelectorAll(".cloud");
 
 //piano sound instrument//
-const piano = new Tone.sampler({
+const piano = new Tone.Sampler({
     urls: {
-        C4: "C4.mp3",
-        D4: "D4.mp3",
-        E4: "E4.mp",
-        F4: "F4.mp3",
-        G4: "G4.mp3",
+        C4: "C4.mp3", 
+        "D#4": "Ds4.mp3",
+        "F#4": "Fs4.mp3",
         A4: "A4.mp3",
-        B4: "B4.mp3",
-        C5: "C5.mp3"
     }, 
-
-    baseUrl: "sounds/piano/"
+    release: 1,
+    baseUrl: "https://tonejs.github.io/audio/salamander/","
 }).toDestination();
+
+const planeSynth = new Tone.Synth({
+    oscillator: {type: "triangle" },
+}). toDestination();
 
 let audioHasStarted =false;
 
+async function startAudioIfNeeded() {
+    if (!audioHasStarted) {
+        await Tone.start();
+        audioHasStarted = true;
+    }
+}
 
-//start/stop buttons that make the plane fly//
+Tone.getDestination().volume.value= -8;
 
- StartStopButton.addEventListener("click", async function() {
+volumeUpButton.addEventListener("click", function () {
+    const current = Tone.getDestination().volume.value;
+    Tone.getDestination().volume.value=Math.min(current + 6,0);
+});
+
+volumeDownButton.addEventListener("click", function () {
+    const current = Tone.getDestination().volume.value;
+    Tone.getDestination().volume.value=Math.max(current + 6,-30);
+});
+
+mutebutton.addEventListener("click", function () {
+    Tone.getDestination().mute=!Tone.getDestination().mute;
+    mutebutton.textContent=Tone.getDestination().mute ? "🔊" : "🔊" ; 
+});
+
+StartStopButton.addEventListener("click", async function () {
+    await startAudioIfNeeded();
+    plane.classList.toggle("flying");
+    plane.classList.toggle("flying");
+    StartStopButton.textContent = plane.classList.contains("flying")? "⏸" : "▶";
+});
+
+dayNightButton.addEventListener("click", function () {
+    document.body.classList.toggle("night");
+    dayNightButton.textContent=document.body.classList.contains("night")? "☼" : "☾";
+});
+
+infoButton.addEventListener("click", function () {
+    modalOverlay.classList.remove("hidden");
+});
+
+modalCloseButton.addEventListener("click", function () {
+    modalOverlay.classList.add("hidden");
+});
+
+modalCloseX.addEventListener("click", function () {
+    modalOverlay.classList.add("hidden");
+});
+
+let planeIsUp = false;
+
+plane.addEventListener("click", async function () {
     await startAudioIfNeeded();
 
-    plane.classList.add("flying");
-
-    if (plane.classList.contains("flying")) {
-        StartStopButton.textContent = "⏸";
-    }else{
-        StartStopButton.textContent = "▶";
+    if (planeIsUp) {
+        plane.style.top = "50%";
+        planeSynth.triggerAttackRelease("A3", "4n");
+    } else {
+        plane.style.top = "30%";
+        planeSynth.triggerAttackRelease("A4", "4n");
     }
-    });
 
-    //volume controls//
-    piano.volume.value = -8;
-
-    mutebutton.addEventListener("click", function () {
-        piano.mute= !piano.mute;
-        if (piano.mute) {
-            mutebutton.textContent = "🎶";
-        }else{
-            mutebutton.textContent="🎶";
-        }
-        });
-
-
-    //day/night button//
-    DayNightButton.addEventListener("click", function () {
-        document.body.classList.toggle("night");
-
-        if (document.body.classList.contains("night")) {
-            DayNightButton.textContent="*";
-        } else{
-            DayNightButton.textContent="🌙";
-        }
-    });
+    planeIsUp = !planeIsUp;
+});
 
     //clouds - allow users to tap a notes, and then tap again to stop it
     //one listener per cloud but they all share the same code/function
+
     clouds.forEach(function (cloud) {
         cloud.addEventListener("click", async function () {
             await startAudioIfNeeded();
             const note = cloud.dataset.note;
 
-            //play piano notes//
-            piano.triggerAttackRelease(note,"2n");
-
-            //cloud visually reacts
-            cloud.classList.add("playing");
-
-            setTimeout(function () {
-                cloud.classList.remove("playing");
-            }, 800);
+            if (cloud.classList.contains("playing")) {
+                piano.triggerRealse(note);
+                cloud.classList,remove("playing");
+            } else {
+                piano.triggerAttack(note);
+                cloud.classList.add("playing");
+            }
         });
-    });
-
-    const modalCloseX = document.getElementById("modal-close-x");
-    modalCloseX.addEventListener("click", function () {
-        modalOverlay.classList.add("hidden");
     });
