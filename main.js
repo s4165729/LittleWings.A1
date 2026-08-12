@@ -8,7 +8,6 @@ const volumeDownButton = document.getElementById("volumedownbutton");
 const volumeUpButton = document.getElementById("volumeupbutton");
 const modalOverlay = document.getElementById("modal-overlay");
 const modalCloseButton = document.getElementById("modal-close");
-const modalCloseX = document.getElementById("modal-close-x");
 const plane = document.getElementById("plane");
 const clouds = document.querySelectorAll(".cloud");
 
@@ -21,7 +20,7 @@ const piano = new Tone.Sampler({
         A4: "A4.mp3",
     }, 
     release: 1,
-    baseUrl: "https://tonejs.github.io/audio/salamander/","
+    baseUrl: "https://tonejs.github.io/audio/salamander/",
 }).toDestination();
 
 const planeSynth = new Tone.Synth({
