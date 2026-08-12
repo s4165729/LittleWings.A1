@@ -185,3 +185,23 @@ h1 {
     font-size: 16px;
     cursor: pointer;
 }
+
+.myprofile-box {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 6px 11px;
+    font-family: playwrite AU QLD, cursive;
+    font-size: 13px;
+    color: var(--bg-color);
+    background-color:transparent;
+    border: 1.5px solid var(--text-color);
+    border-radius: 9px;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.myprofile-box:hover {
+    background-color: var(--text-color);
+    color: var();
+}
