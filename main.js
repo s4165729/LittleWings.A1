@@ -104,7 +104,7 @@ plane.addEventListener("click", async function () {
 
             if (cloud.classList.contains("playing")) {
 
-                piano.triggerRealse(note);
+                piano.triggerRelease(note);
                 cloud.classList.remove("playing");
             } else {
 
