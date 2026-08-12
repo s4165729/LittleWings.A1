@@ -19,13 +19,10 @@
         
         <h1>Little Wings</h1>
 
-        <div class="control-buttons">
-            <button id="daynightbutton" aria-label="Toggle day or night">☾</button>
-            <button id="startstopbutton" aria-label="start or pause">▶</button>
-        </div>
-
         <div class="volume-controls">
-            <button id="mutebutton" aria-label="Mute or unmute">🎶</button>
+            <button class="vol-btn" id="mutebutton" aria-label="Mute or unmute">🎶</button>
+            <button class="vol-btn" id="volumedownbutton" aria-label="Volume down">-</button>
+            <button class="vol-btn" id="volumeupbutton" aria-label="Volume up">+</button>
         </div> 
         
         <div id="clouds">
@@ -64,6 +61,27 @@
 
         <img src="plane.png" id="plane" alt="plane">
 </div>
+
+<!--start/stop button, day/night button and link to portfolio and information on how to play-->
+<div class="control-buttons">
+    <a class="ctrl-btn" id="portfoliobutton" href="https://akiraclass.portfolio.github.io/work-idex" 
+    target="_blank" rel="noopener" aria-label="View my work index">📖</a>
+    <button id="infobutton" aria-label="How to play">⚙︎</button>
+    <button id="startstopbutton" aria-label="start or pause">▶︎</button>
+    <button id="daynightbutton" aria-label="toggle day or night">☾</button>
+</div>
+
+<!--instruction popup shown automatically when page loads-->
+<div id="modal-overlay">
+    <div class="modal-card">
+        <h2>HOW TO PLAY</h2>
+        <p>Tap a cloud to play a note. Tap again to stop</p>
+        <p> ▶︎ (start)<p>
+        <p> 🎶  - + (noise controls) </p> 
+        <button id="modal-close-x" aria-label="close">x</button>
+    </div>
+</div>
+
 
 <script src="main.js" defer></script>
         

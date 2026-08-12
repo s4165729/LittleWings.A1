@@ -81,3 +81,8 @@ let audioHasStarted =false;
             }, 800);
         });
     });
+
+    const modalCloseX = document.getElementById("modal-close-x");
+    modalCloseX.addEventListener("click", function () {
+        modalOverlay.classList.add("hidden");
+    });
