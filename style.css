@@ -192,8 +192,8 @@ h1 {
     left: 20px;
     padding: 6px 11px;
     font-family: playwrite AU QLD, cursive;
-    font-size: 13px;
-    color: var(--bg-color);
+    font-size: 11px;
+    color: var(--text-color);
     background-color:transparent;
     border: 1.5px solid var(--text-color);
     border-radius: 9px;
@@ -204,4 +204,25 @@ h1 {
 .myprofile-box:hover {
     background-color: var(--text-color);
     color: var();
+}
+
+.community-box {
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    padding: 6px 11px;
+    font-family: Playwrite AU QLD, cursive;
+    font-size: 11px;
+    color: var(--text-color);
+    background-color: transparent;
+    border: 1.5px solid var(--text-color);
+    border-radius: 9px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.community-box:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
 }
